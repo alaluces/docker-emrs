@@ -1,9 +1,10 @@
 # docker-emrs
 
-# clone the repo
+clone the repo
 git clone https://github.com/alaluces/emrs.git
 
-# build
+build
 docker build -t emrs .
 
-# run
+run
+docker run --name emrs -d -p 80:80 --network=my_lan --hostname=emrs arieslaluces/emrs
