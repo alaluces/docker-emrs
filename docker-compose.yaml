@@ -1,0 +1,25 @@
+version: '2'
+services:
+  db:
+    image: arieslaluces/emrs-db:latest
+    container_name: emrs-db
+    networks:
+      - my_lan
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "emrs"
+      MYSQL_USER: "emrs"
+      MYSQL_PASSWORD: "1234"
+      MYSQL_ROOT_PASSWORD: "root"
+
+  web:
+    build: docker-emrs/.
+    container_name: emrs
+    networks:
+      - my_lan
+    ports:
+     - "80:80"
+networks:
+  my_lan:
+    driver: bridge
